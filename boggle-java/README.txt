@@ -1,0 +1,1 @@
+Launch BoggleGame.java and follow prompts.
