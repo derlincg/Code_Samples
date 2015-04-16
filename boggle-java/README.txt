@@ -1,1 +1,3 @@
-Launch BoggleGame.java and follow prompts.
+Launch program in eclipse
+OR
+from command line: java BoggleGame
