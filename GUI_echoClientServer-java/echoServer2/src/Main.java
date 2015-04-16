@@ -4,11 +4,11 @@
  * Class: CSCE 320
  * Date: March 9, 2015
  * Desc: Basic Echo Server with GUI.
- * To run:  java EchoServer [ip address] [port]
+ * To run:  java Main [ip address] [port]
  * Resources: Dr. Hauser
  *      
  */
-public class EchoServer {
+public class Main {
 
     /**
      * @param args the command line arguments

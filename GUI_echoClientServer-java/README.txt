@@ -3,9 +3,9 @@ and distributes that message to all the clients connected to the server (Essenti
 Both the Client and the Server use MVC design.
 
 RUN VIA COMMAND PROMPT:
-1. navigate to the src folder of the server, and run: java Server2 [ipv4_of_copmputer] [port #]
+1. navigate to the src folder of the server, and run: java Main [ipv4_of_copmputer] [port #]
 2. click the start server button.
-3. navigate to the src folder of the client, and run: java Client [ipv4 of computer running the server] [port #]
+3. navigate to the src folder of the client, and run: java Main [ipv4 of computer running the server] [port #]
 Feel free to connect as many clients as you want to the server, on the same computer or on a different computer.
 
 RUN VIA NETBEANS:

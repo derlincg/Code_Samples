@@ -4,12 +4,12 @@
  * Class: CSCE 320
  * Date: March 2, 2015
  * Desc: Basic echo client with GUI. 
- * To run:  java EchoClient [ip address] [port]
+ * To run:  java Main [ip address] [port]
  * Resources: http://www.java2s.com/Tutorial/Java/0320__Network/EchoClient.htm
  *      
  */
 
-public class EchoClient {
+public class Main {
 
     /**
      * @param args the command line arguments Launches GUI application using IP
