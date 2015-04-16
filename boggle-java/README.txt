@@ -1,3 +1,5 @@
 Launch program in eclipse
 OR
-from command line: java BoggleGame
+from command line:
+	javac *.java 
+	java BoggleGame

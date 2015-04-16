@@ -3,15 +3,19 @@ and distributes that message to all the clients connected to the server (Essenti
 Both the Client and the Server use MVC design.
 
 RUN VIA COMMAND PROMPT:
-1. navigate to the src folder of the server, and run: java Main [ipv4_of_copmputer] [port #]
+1. navigate to the src folder of the server, and run: 
+	javac *.java 
+	java Main [ip address of computer] [port #]
 2. click the start server button.
-3. navigate to the src folder of the client, and run: java Main [ipv4 of computer running the server] [port #]
+3. navigate to the src folder of the client, and run: 
+	javac *.java 
+	java Main [same ip as server] [same port # as server]
 Feel free to connect as many clients as you want to the server, on the same computer or on a different computer.
 
 RUN VIA NETBEANS:
 1. open up both the client and server projects in NetBeans
 2. For the Server, Go to File -> project properties -> Run
-3. In the arguments section, type in the ip address of the computer in which the server is running, and port number separated by a space.
+3. In the arguments section, type in the ip address of the computer and a port number separated by a space.
 4. Run the server program and click "start server".
 5. Client - follow steps 2 and 3.
 5. Run 1 or more clients.
