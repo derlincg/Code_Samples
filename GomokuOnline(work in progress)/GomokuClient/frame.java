@@ -1,8 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This class manages the card layout and all necessary views.
  */
-
 
 import java.awt.CardLayout;
 

@@ -242,11 +242,12 @@ public class LobbyView extends javax.swing.JPanel {
      * @param evt 
      */
     private void challengeBActionPerformed(ActionEvent evt) {
-    	if(userSelected.equals(controller.getUsername())){
+    	
+   	if(userSelected.equals(controller.getUsername())){
     		displayErrorMessage("User cannot challenge self.");
     	}else{
-        updateSentList(userSelected);
-        controller.sendChallenge(userSelected);
+         updateSentList(userSelected);
+         controller.sendChallenge(userSelected);
     	}
     	
     }
@@ -279,7 +280,8 @@ public class LobbyView extends javax.swing.JPanel {
      */
     private void updateSentList(String userSelected) {
 
-        sentModel.addElement(userSelected);
+            sentModel.addElement(userSelected);
+
     	
     }
     
@@ -301,7 +303,7 @@ public class LobbyView extends javax.swing.JPanel {
         displayErrorMessage("User " + name + " rejected your game challenge.");
     }
     
-   
+
     /**
      * Method called when user rejects a challenge.
      * Removes the rejected username from the list.
@@ -311,10 +313,26 @@ public class LobbyView extends javax.swing.JPanel {
         receivedModel.removeElement(name);
     }
 
-    void displayErrorMessage(String errorMessage) {
+    /**
+     * Displays the given error message in a dialog box.
+     * @param errorMessage error message to display
+     */
+   public void displayErrorMessage(String errorMessage) {
 
         JOptionPane.showMessageDialog(this, errorMessage);
     }
+    
+    public DefaultListModel<String> getSentList() {
+		return sentModel;
+	}
+    /**
+     * Removes the given name from sent challenges.
+     * @param name 
+     */
+   public void rescindFromSentChallenges(String name) {
+		sentModel.removeElement(name);
+		
+	}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acceptB;
     private javax.swing.JList challengesReceivedList;
@@ -332,12 +350,5 @@ public class LobbyView extends javax.swing.JPanel {
     private javax.swing.JLabel onlineUsersL;
     // End of variables declaration//GEN-END:variables
 
-	public DefaultListModel<String> getSentList() {
-		return sentModel;
-	}
-
-	public void rescindFromSentChallenges(String name) {
-		sentModel.removeElement(name);
-		
-	}
+	
 }

@@ -28,10 +28,6 @@ public class GomokuServer {
         
         view.setVisible(true);
         
-        JFrame frame = new JFrame();
-        JPanel panel = new GameView(30, 30);
-        frame.add(panel);
-        frame.setSize(500, 500);
-        frame.setVisible(true);
+       
     }
 }

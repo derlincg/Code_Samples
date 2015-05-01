@@ -1,4 +1,6 @@
-
+/**
+ * This class manages the GameView.
+ */
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -33,7 +35,7 @@ public class GameView extends javax.swing.JPanel {
     private JPanel game = new JPanel();
     private JPanel quit = new JPanel();
     private JLabel gomoku;
-    //private JButton quitB -
+   
     private final ActionListener listener = new ActionListener() {
 
         @Override
@@ -55,9 +57,7 @@ public class GameView extends javax.swing.JPanel {
         this.setLayout(new BorderLayout());
         game.setLayout(new GridLayout(width, length));
         this.add(game, BorderLayout.CENTER);
-        
-        // this.setLayout(new GridLayout(width,length));
-      //  this.setLayout(new GridLayout(width,length)); //set layout
+   
         grid=new JButton[width][length]; //allocate the size of grid
         for(int y=0; y<length; y++){
                 for(int x=0; x<width; x++){
@@ -72,13 +72,7 @@ public class GameView extends javax.swing.JPanel {
         gomoku = new JLabel("Gomoku");
         gomoku.setFont(new java.awt.Font("Tahoma", 1, 24));
         this.add(gomoku, BorderLayout.NORTH);
-        quitB = new JButton("Quit");/* {
-            public Dimension getPreferredSize(){
-                return new Dimension(5, 25);
-            };
-        };*/
-       // Border spacer = BorderFactory.createEmptyBorder(5,5,5,5);
-       // quitB.setBorder(spacer);
+        quitB = new JButton("Quit");
         quitB.setPreferredSize(new Dimension(70 , 25));
         
         quitB.setText("Quit");
@@ -91,12 +85,14 @@ public class GameView extends javax.swing.JPanel {
         
         quit.setSize(25 ,80);
         this.add(quit, BorderLayout.PAGE_END);
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //this.pack(); //sets appropriate size for frame
-        //frame.setVisible(true); //makes frame visible
+      
         this.setSize(500, 500);
     }
-    
+    /**
+     * Method is called when quit button is clicked.  
+     * Closes application.
+     * @param evt 
+     */
     private void quitBActionPerformed(ActionEvent evt){
         System.exit(0);
     }

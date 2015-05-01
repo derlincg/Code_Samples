@@ -60,6 +60,9 @@ public class FinalLobbyView extends javax.swing.JPanel {
         acceptB = new javax.swing.JButton();
         rejectB = new javax.swing.JButton();
         challengeB = new javax.swing.JButton();
+        onlineUsersL = new javax.swing.JLabel();
+        challengesRecdL = new javax.swing.JLabel();
+        challengesSentL = new javax.swing.JLabel();
 
         gomokuLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         gomokuLabel.setText("Gomoku");
@@ -96,15 +99,18 @@ public class FinalLobbyView extends javax.swing.JPanel {
 
         challengeB.setText("Challenge");
 
+        onlineUsersL.setText("Online Users");
+
+        challengesRecdL.setText("Challenges Received");
+
+        challengesSentL.setText("Challenges Sent");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(gomokuLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(quitB))
@@ -121,17 +127,33 @@ public class FinalLobbyView extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(onlinePlayerPane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(challengesReceivedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(challengesReceivedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(challengesRecdL))
                                 .addGap(18, 18, 18)
-                                .addComponent(challengesSentPane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(challengesSentPane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(challengesSentL)
+                                        .addGap(13, 13, 13))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(onlineUsersL)
+                            .addComponent(gomokuLabel))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(gomokuLabel)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(onlineUsersL)
+                    .addComponent(challengesRecdL)
+                    .addComponent(challengesSentL, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(onlinePlayerPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(challengesReceivedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,13 +185,16 @@ public class FinalLobbyView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acceptB;
     private javax.swing.JButton challengeB;
+    private javax.swing.JLabel challengesRecdL;
     private javax.swing.JList challengesReceivedList;
     private javax.swing.JScrollPane challengesReceivedPane;
+    private javax.swing.JLabel challengesSentL;
     private javax.swing.JList challengesSentList;
     private javax.swing.JScrollPane challengesSentPane;
     private javax.swing.JLabel gomokuLabel;
     private javax.swing.JScrollPane onlinePlayerPane;
     private javax.swing.JList onlinePlayersList;
+    private javax.swing.JLabel onlineUsersL;
     private javax.swing.JButton quitB;
     private javax.swing.JButton rejectB;
     // End of variables declaration//GEN-END:variables

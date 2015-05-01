@@ -18,10 +18,6 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="gomokuLabel" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="quitB" min="-2" max="-2" attributes="0"/>
@@ -38,17 +34,33 @@
                                   <Component id="rejectB" min="-2" pref="70" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="onlinePlayerPane" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="challengesReceivedPane" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="challengesReceivedPane" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="challengesRecdL" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="challengesSentPane" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="challengesSentPane" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="challengesSentL" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="onlineUsersL" min="-2" max="-2" attributes="0"/>
+                          <Component id="gomokuLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,7 +69,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="gomokuLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="onlineUsersL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="challengesRecdL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="challengesSentL" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="onlinePlayerPane" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="challengesReceivedPane" min="-2" max="-2" attributes="0"/>
@@ -161,6 +179,21 @@
     <Component class="javax.swing.JButton" name="challengeB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Challenge"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="onlineUsersL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Online Users"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="challengesRecdL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Challenges Received"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="challengesSentL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Challenges Sent"/>
       </Properties>
     </Component>
   </SubComponents>

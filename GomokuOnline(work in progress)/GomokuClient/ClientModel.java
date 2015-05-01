@@ -1,4 +1,7 @@
-
+/**
+ * This class manages all pertinent data for the client application.
+ * Communicates GUI transition from each controller to the frame class.
+ */
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -48,13 +51,12 @@ public class ClientModel implements Runnable{
     private int port = 27200;
     
   
-    /**
-     * Associates ClientModel and LoginController.  Opens new socket to
-     * specified host and port.
-     * @param cont
-     * @param host
-     * @param port 
-     */
+   /**
+    * Creates a new frame to hold each needed view.
+    * @param login  instance of login view
+    * @param lobby  instance of lobby view
+    * @param game   instance of game view
+    */
   public void createFrame(LoginView login, LobbyView lobby, GameView game){
       frame  = new Frame(login, lobby, game);
   } 
@@ -95,7 +97,10 @@ public class ClientModel implements Runnable{
       this.loginController =  cont;
  
   }
-  
+  /**
+   * Associates model with gameController.
+   * @param cont 
+   */
    public void setGameController( GameController cont ){
        this.gameController = cont;
     }
@@ -118,36 +123,47 @@ public class ClientModel implements Runnable{
         lobbyController.updateOnlinePlayers(online);
         
     }
-
-    void openGameConnection() {
+    /**
+     * Creates a starts new thread that will accept 
+     * incoming connection from peer.
+     */
+   public void openGameConnection() {
         
        worker = new Thread(this);
        worker.start();
        
     }
-
-    void lobbyGameTrans() {
+   /**
+    * Transitions from lobby view to game view.
+    */
+   public void lobbyGameTrans() {
         frame.updateView(GAME);
     }
-
+   
+    /**
+     * Started by openGameConnection.
+     * Creates new serverSocket and waits for a client to connect to it.
+     * Sets up IO streams 
+     */
     @Override
     public void run() {
          try {
-             System.out.println("Thread started");
             ss = new ServerSocket(port);
             challengeeSocket = ss.accept(); //
             inStream = challengeeSocket.getInputStream();
             dataIn = new DataInputStream(inStream);
             outStream = challengeeSocket.getOutputStream();
             dataOut = new DataOutputStream(outStream);
-            System.out.println("Calling gameController.newGame()");
             gameController.newGame();
             
         } catch (IOException ex) {
             Logger.getLogger(ClientModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    /**
+     * Connects to opponents server socket.
+     * @param m 
+     */
     void connectToOpponent(String m) {
         try {
             opponent = new Socket( m, port );
@@ -157,7 +173,11 @@ public class ClientModel implements Runnable{
             Logger.getLogger(ClientModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    /**
+     * Handles GUI transition from login view to game view.
+     * @param difficulty 
+     */
     public void aiGameTrans(String difficulty) {
 		frame.updateView(GAME);
 		

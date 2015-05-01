@@ -1,4 +1,6 @@
-
+/**
+ * This class will manage game play set up.
+ */
 /**
  * Team One Gomoku CSCE 320 - Spring 2015 3/16/2015 Java - JVM Sources:
  *
