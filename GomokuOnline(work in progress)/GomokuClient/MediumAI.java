@@ -9,22 +9,22 @@
  * Revisions:
  * 3/14/2015 - Class created by Joseph Bowley.
  */
-public class MediumAI extends GameAI{
+//public class MediumAI extends GameAI{
     
-    /**
+   /**
      * MediumAI Constructor
      */
-    public MediumAI()
+  /*  public MediumAI()
     {
         
     }
-    
+    */
     /**
      * Method to start the AI
      */
-    @Override
-    public void playGame()
+   // @Override
+ /*   public void playGame()
     {
         
-    }
-}
+    */
+//}

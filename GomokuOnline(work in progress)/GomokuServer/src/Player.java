@@ -1,7 +1,5 @@
 //package gomokuserver;
 
-
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -16,7 +14,9 @@ import java.util.logging.Logger;
  * @author PLUCSCE
  */
 public class Player implements Runnable {
+
     //fields
+
     private final Constants constant = new Constants();
 
     private String username;
@@ -49,15 +49,17 @@ public class Player implements Runnable {
         controller = cont;
         //getMessages();
     }
-    
+
     /**
      * adds the specified player to matchmaking
+     *
      * @param username
-     * @param p 
+     * @param p
      */
-    public void addToMatchMaking(String username, Player p){
+    public void addToMatchMaking(String username, Player p) {
         controller.addToMatchMaking(username, p);
     }
+
     /**
      * Sets username
      *
@@ -84,7 +86,6 @@ public class Player implements Runnable {
     public void sendMessage(String message) {
         @SuppressWarnings("LocalVariableHidesMemberVariable")
         byte[] msg = message.getBytes();
-
 
         try {
             out.write(msg);
@@ -139,21 +140,24 @@ public class Player implements Runnable {
     }
 
     /**
-     * Takes in the messages sent from the client, parses them, then registers or logs in the player
+     * Takes in the messages sent from the client, parses them, then registers
+     * or logs in the player
+     *
      * @param msg
      * @return
      */
     @SuppressWarnings("ConvertToStringSwitch")
     public String processMessage(String msg) {
-    	    //System.out.println(msg);
+        //System.out.println(msg);
         //String msg = removeFormattingCharacters(mssg); 
         String[] message = msg.split(" ");
-        if(message[0].equals(constant.REGISTER)) {
+        if (message[0].equals(constant.REGISTER)) {
             controller.sendMessageToAll(constant.ONLINE + " " + controller.getAllUserNames() + " " + message[1]);
             if (controller.registerPlayer(message[1], message[2])) {
                 controller.addPlayer(username = message[1]);
                 addToMatchMaking(message[1], this);
                 //System.out.println(username);
+                controller.addPlayerToStats(message[1]);
                 return constant.SUCCESS + " " + controller.getAllUserNames();
             } else {
                 return constant.FAIL;
@@ -163,59 +167,69 @@ public class Player implements Runnable {
             if (controller.loginPlayer(message[1], message[2])) {
                 controller.addPlayer(username = message[1]);
                 addToMatchMaking(message[1], this);
-                return constant.SUCCESS + " " + controller.getAllUserNames() ;
+                return constant.SUCCESS + " " + controller.getAllUserNames();
             } else {
                 return constant.FAIL;
             }
         } else if (message[0].equals(constant.CHALLENGE)) {
-           controller.sendChallenge(message[1], message[0]+" "+message[2]);
-           return "";
-        } else if (message[0].equals(constant.ACCEPT)) {
-           controller.sendResponse(message[1], message[0]+ " "+message[2] + " " + controller.getUsersIPAddress(message[2]));
-           return "";
-        } else if (message[0].equals(constant.REJECT)) {
-            controller.sendResponse(message[1], message[0]+ " "+message[2]);
+            controller.sendChallenge(message[1], message[0] + " " + message[2]);
             return "";
-        }else if (message[0].equals(constant.RESCIND)) {
-            controller.sendRescind(message[1], message[0]+ " "+message[2]);
+        } else if (message[0].equals(constant.ACCEPT)) {
+            controller.sendResponse(message[1], message[0] + " " + message[2] + " " + controller.getUsersIPAddress(message[2]));
+            return "";
+        } else if (message[0].equals(constant.REJECT)) {
+            controller.sendResponse(message[1], message[0] + " " + message[2]);
+            return "";
+        } else if (message[0].equals(constant.RESCIND)) {
+            controller.sendRescind(message[1], message[0] + " " + message[2]);
+            return "";
+        } else if (message[0].equals(constant.GAME)) {
+            if (message[2].equals(constant.WIN))
+            {
+                controller.addWinToPlayerStats(message[1]);
+            }
+            else if(message[2].equals(constant.LOSE)){
+                controller.addLossToPlayerStats(message[1]);
+            }
             return "";
         }
+        else if (message[0].equals(constant.STATS))
+        {
+            return controller.getAllStatistics();
+        }
         //MYCODE
-        
+
         return constant.FAIL;
     }
-    
-    public String getRemoteIPAddress()
-    {
+
+    public String getRemoteIPAddress() {
         return socket.getRemoteSocketAddress().toString();
     }
-    
+
     /**
      * Sets a player to "not in a game"
      */
-    public void available()
-    {
+    public void available() {
         inGame = false;
     }
-    
+
     /**
      * sets a player to "in game"
      */
-    public void notAvailable()
-    {
+    public void notAvailable() {
         inGame = true;
     }
     /*
-    public String removeFormattingCharacters(final String toBeEscaped) {
-        StringBuilder escapedBuffer = new StringBuilder();
-        for (int i = 0; i < toBeEscaped.length(); i++) {
-            if ((toBeEscaped.charAt(i) != '\n') && (toBeEscaped.charAt(i) != '\r') && (toBeEscaped.charAt(i) != '\t')) {
-                escapedBuffer.append(toBeEscaped.charAt(i));
-            }
-        }
-        String s = escapedBuffer.toString();
-        return s;//
-        // Strings.replaceSubString(s, "\"", "")
-    }
-    */
+     public String removeFormattingCharacters(final String toBeEscaped) {
+     StringBuilder escapedBuffer = new StringBuilder();
+     for (int i = 0; i < toBeEscaped.length(); i++) {
+     if ((toBeEscaped.charAt(i) != '\n') && (toBeEscaped.charAt(i) != '\r') && (toBeEscaped.charAt(i) != '\t')) {
+     escapedBuffer.append(toBeEscaped.charAt(i));
+     }
+     }
+     String s = escapedBuffer.toString();
+     return s;//
+     // Strings.replaceSubString(s, "\"", "")
+     }
+     */
 }

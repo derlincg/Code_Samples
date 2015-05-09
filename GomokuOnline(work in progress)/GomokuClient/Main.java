@@ -21,7 +21,8 @@ public class Main {
              LobbyView lobbyView = new LobbyView();
              LoginView loginView = new LoginView();
              GameView gameView = new GameView(model.gameHeight, model.gameWidth);
-             model.createFrame(loginView, lobbyView, gameView);
+             LeaderboardView leaderView = new LeaderboardView();
+             model.createFrame(loginView, lobbyView, gameView, leaderView);
  
              LoginController loginController = new LoginController();
              loginController.setModel(model);
@@ -38,7 +39,15 @@ public class Main {
              gameController.setView(gameView);
              gameView.setController(gameController);
              
+             LeaderboardController leaderboard = new LeaderboardController();
+             leaderboard.setView(leaderView);
+             leaderboard.setModel(model);
              
+             GameModel gameModel = new GameModel();
+             
+             gameController.setGameModel(gameModel);
+             
+             gameModel.setController(gameController);
 
              model.setLoginController(loginController);
              model.setLobbyController(lobbyController);

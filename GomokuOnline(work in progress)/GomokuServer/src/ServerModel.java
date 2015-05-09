@@ -21,6 +21,8 @@ public class ServerModel {
    private ServerController controller;
    private final RegisteredPlayers registeredPlayers;
    private final MatchMaking matchmaker;
+   
+   private final PlayerStatistics playerStats;
    /**
     * sets number of connections to 0
     */
@@ -31,6 +33,7 @@ public class ServerModel {
        allPlayers = new ArrayList<Player>();
        numConnections = 0;
        matchmaker = new MatchMaking();
+       playerStats = new PlayerStatistics();
    }
    
    /**
@@ -169,8 +172,39 @@ public class ServerModel {
         return matchmaker.getUsersIPAddress(user);
     }
 
-	public void sendRescind(String challenger, String response) {
-		matchmaker.respond(challenger, response);
-		
-	}
+    public void sendRescind(String challenger, String response) {
+	matchmaker.respond(challenger, response);
+    }
+    
+    /**
+     * adds a win for the specified user to the statistics data stored on the server
+     * @param user 
+     */
+    public void addWinToPlayerStats(String user)
+    {
+        playerStats.addWin(user);
+    }
+    
+    /**
+     * adds a loss for the specified user to the statistics data stored on the server
+     * @param user 
+     */
+    public void addLossToPlayerStats(String user)
+    {
+        playerStats.addLoss(user);
+    }
+    
+    /**
+     * adds the specified user to the statistics data stored with the server
+     * @param username
+     */
+    public void addPlayerToStats(String username)
+    {
+        playerStats.addPlayerStats(username);
+    }
+    
+    public String getAllStatistics()
+    {
+        return playerStats.getAllStats();
+    }
 }

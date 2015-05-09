@@ -18,4 +18,8 @@ public class Constants {
     public final String FAIL = "fail";
     public final String ONLINE = "online"; 
     public final String RESCIND = "rescind";
+    public final String STATS = "stats";
+    public final String WIN = "win";
+    public final String  LOSE = "lose";
+    public final String GAME = "game";
 }

@@ -15,7 +15,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.net.InetAddress;
 
 /**
  *
@@ -23,7 +22,7 @@ import java.net.InetAddress;
  */
 public class ServerController implements Runnable {
     //fields
-    private Constants constant = new Constants();
+    private final Constants constant = new Constants();
     private final ServerModel model;
     private final ServerView view;
     private ServerSocket serverSocket;
@@ -211,8 +210,38 @@ public class ServerController implements Runnable {
        return model.getUsersIPAddress(user);
    }
 
-public void sendRescind(String challenger, String response) {
+    public void sendRescind(String challenger, String response) {
 	model.sendRescind(challenger, response); 
 	
-}
+    }
+    
+    /**
+     * Tells the model to add a player to the statistics data
+     * @param username 
+     */
+    public void addPlayerToStats(String username)
+    {
+        model.addPlayerToStats(username);
+    }
+    
+    /**
+     * Tells the model to add a win to the specified players statistics data 
+     * @param user
+     */
+    public void addWinToPlayerStats(String user){
+        model.addWinToPlayerStats(user);
+    }
+    
+    /**
+     * Tells the model to add a loss to the specified players statistics data 
+     * @param user
+     */
+    public void addLossToPlayerStats(String user){
+        model.addLossToPlayerStats(user);
+    }
+    
+    public String getAllStatistics()
+    {
+        return model.getAllStatistics();
+    }
 }

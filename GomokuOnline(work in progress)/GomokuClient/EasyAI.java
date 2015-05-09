@@ -9,12 +9,12 @@
  * Revisions:
  * 3/14/2015 - Class created by Joseph Bowley.
  */
-public class EasyAI extends GameAI {
+//public class EasyAI extends GameAI {
     
     /**
      * EasyAI Constructor
      */
-    public EasyAI()
+   /* public EasyAI()
     {
         
     }
@@ -22,9 +22,9 @@ public class EasyAI extends GameAI {
     /**
      * Method to start the AI
      */
-    @Override
+   /* @Override
     public void playGame()
     {
         
-    }
-}
+    }*/
+//}

@@ -9,22 +9,22 @@
  * Revisions:
  * 3/14/2015 - Class created by Joseph Bowley.
  */
-public class HardAI extends GameAI {
+//public class HardAI extends GameAI {
     
     /**
      * HardAI Constructor
      */
-    public HardAI()
+   /* public HardAI()
     {
         
     }
-    
+    */
     /**
      * Method to start the AI
      */
-    @Override
+   /* @Override
     public void playGame()
     {
         
-    }
-}
+    }*/
+//}

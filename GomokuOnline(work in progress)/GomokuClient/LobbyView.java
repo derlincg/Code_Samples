@@ -5,6 +5,7 @@
 import java.awt.event.ActionEvent;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -84,7 +85,7 @@ public class LobbyView extends javax.swing.JPanel {
         acceptB = new javax.swing.JButton();
         rejectB = new javax.swing.JButton();
         challengeB = new javax.swing.JButton();
-
+        leaderboardB = new javax.swing.JButton("Leaderboard");
         onlineUsersL = new javax.swing.JLabel();
         challengesRecdL = new javax.swing.JLabel();
         challengesSentL = new javax.swing.JLabel();
@@ -148,6 +149,12 @@ public class LobbyView extends javax.swing.JPanel {
                 challengeBActionPerformed(evt);
             }
         });
+        
+         leaderboardB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leaderboardBActionPerformed(evt);
+            }
+        });
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,7 +163,9 @@ public class LobbyView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(quitB))
+                .addComponent(quitB)
+                .addGap(200 ,200,200)
+                .addComponent(leaderboardB))
                 .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,8 +174,9 @@ public class LobbyView extends javax.swing.JPanel {
                 .addComponent(challengeB)
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(acceptB, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(rejectB, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(acceptB, 80, 80, 80)
+                .addComponent(rejectB, 80,80,80)))
+                .addComponent(leaderboardB, 70, 70, 70)
                 .addGroup(layout.createSequentialGroup()
                 .addComponent(onlinePlayerPane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -206,9 +216,15 @@ public class LobbyView extends javax.swing.JPanel {
                 .addComponent(challengeB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(rejectB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 0, Short.MAX_VALUE)
                 .addComponent(quitB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 0, Short.MAX_VALUE)
+                .addComponent(leaderboardB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 0, Short.MAX_VALUE)
+                
                 .addContainerGap()));
+        
+        //this.add(leaderboardB);
     }// </editor-fold>
 
     /**
@@ -252,6 +268,10 @@ public class LobbyView extends javax.swing.JPanel {
     	
     }
 
+     private void leaderboardBActionPerformed(ActionEvent evt) {
+           controller.lobbyLeaderTrans();
+      	
+    }
     /**
      * List selection listener for onlinePlayersList.  Keeps track of which
      * player is currently selected in the list of online players.
@@ -348,6 +368,7 @@ public class LobbyView extends javax.swing.JPanel {
     private javax.swing.JLabel challengesRecdL;
     private javax.swing.JLabel challengesSentL;
     private javax.swing.JLabel onlineUsersL;
+    private JButton leaderboardB;
     // End of variables declaration//GEN-END:variables
 
 	

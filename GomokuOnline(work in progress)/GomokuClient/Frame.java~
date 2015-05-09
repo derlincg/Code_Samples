@@ -37,7 +37,6 @@ public class Frame extends javax.swing.JFrame {
         lobbyPane = new javax.swing.JPanel();
         gamePanel = new javax.swing.JPanel();
         PanThree = new javax.swing.JLabel();
-        leaderPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,25 +101,6 @@ public class Frame extends javax.swing.JFrame {
         );
 
         mainPane.add(gamePanel, "game");
-        
-         javax.swing.GroupLayout leaderPanelLayout = new javax.swing.GroupLayout(leaderPanel);
-        leaderPanel.setLayout(leaderPanelLayout);
-        leaderPanelLayout.setHorizontalGroup(
-            leaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(leaderPanelLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-				.addComponent(leaderView1, 400,400,400)
-                .addContainerGap(551, Short.MAX_VALUE))
-        );
-        leaderPanelLayout.setVerticalGroup(
-            leaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(leaderPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(leaderView1, 400,400,400)
-                .addContainerGap(375, Short.MAX_VALUE))
-        );
-
-        mainPane.add(leaderPanel, "leaderboard");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,7 +122,23 @@ public class Frame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     public void updateView(String l) {
+    /**
+     * @param args the command line arguments
+     */
+   
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel PanThree;
+    private javax.swing.JPanel gamePanel;
+    private javax.swing.JPanel lobbyPane;
+    private LobbyView lobbyView1;
+    private javax.swing.JPanel loginPane;
+    private LoginView loginView1;
+    private javax.swing.JPanel mainPane;
+    // End of variables declaration//GEN-END:variables
+    private GameView gameView1;
+    private LeaderboardView leaderView1;
+	
+   public void updateView(String l) {
         CardLayout card = (CardLayout)mainPane.getLayout();
         card.show(mainPane, l);
         
@@ -158,19 +154,4 @@ public class Frame extends javax.swing.JFrame {
         gameView1.resetBoard();
     }
  
-   
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel PanThree;
-    private javax.swing.JPanel gamePanel;
-    private javax.swing.JPanel lobbyPane;
-    private LobbyView lobbyView1;
-    private javax.swing.JPanel loginPane;
-    private LoginView loginView1;
-    private javax.swing.JPanel mainPane;
-    // End of variables declaration//GEN-END:variables
-    private GameView gameView1;
-    private LeaderboardView leaderView1;
-    private javax.swing.JPanel leaderPanel;
-	
-  
 }

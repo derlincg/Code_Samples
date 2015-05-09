@@ -94,6 +94,7 @@ public class LobbyController implements Runnable {
 
                 if (len > 0) {
                     receivedMsg = new String(msg, 0, len);
+                    System.out.println("Message from server in LobbyController: " + receivedMsg);
                     String[] msgArray;
                     msgArray = receivedMsg.split("[ ]+");
 
@@ -113,6 +114,7 @@ public class LobbyController implements Runnable {
      * @param msg message to be routed
      */
     private void processMessage(String[] msg) {
+        if(msg.length >= 2){
         String temp = msg[0];
         String name = msg[1];
         switch (temp) {
@@ -134,6 +136,7 @@ public class LobbyController implements Runnable {
                 break;
             default:
                 break;
+        }
         }
     }
 
@@ -165,6 +168,7 @@ public class LobbyController implements Runnable {
      */
     private void challengeAccepted(String m) {
         model.lobbyGameTrans();
+        model.createGameView();
         model.connectToOpponent(m);
         sendRescindResponse(lobby.getSentList());
 
@@ -215,6 +219,7 @@ public class LobbyController implements Runnable {
             String accept = ACCEPT + " " + challengee + " " + model.username;
             dataOut.write(accept.getBytes());
             dataOut.flush();
+            model.createGameView();
             model.lobbyGameTrans();
             newChallengeGame();
             sendRescindResponse(lobby.getSentList());
@@ -279,5 +284,9 @@ public class LobbyController implements Runnable {
             //Add error handling
         }
 
+    }
+    
+    public void lobbyLeaderTrans(){
+        model.lobbyLeaderTrans();
     }
 }

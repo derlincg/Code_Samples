@@ -28,6 +28,8 @@ public class GomokuServer {
         
         view.setVisible(true);
         
+       PlayerStatistics p = new PlayerStatistics();
+       p.addWin("Joseph");
        
     }
 }
