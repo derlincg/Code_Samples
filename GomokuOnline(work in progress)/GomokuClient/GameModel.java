@@ -89,6 +89,11 @@ public class GameModel {
 		// TODO Auto-generated method stub
 		return board.getBoardValue(x, y);
 	}
+
+	public void resetBoard() {
+		board.resetBoard();
+		
+	}
 	
 	
 }

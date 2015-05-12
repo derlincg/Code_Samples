@@ -13,10 +13,8 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Stores and manages data used in player game statistics
  */
 
 /**
@@ -31,6 +29,10 @@ public class PlayerStatistics {
     private PrintWriter pw;
     private String data;
     
+    /**
+     * PlayerStatistics constructor
+     * Reads player stats from a file and stores them in memory for easy access
+     */
     public PlayerStatistics()
     {
         try {
@@ -50,7 +52,10 @@ public class PlayerStatistics {
 	}
     }
     
-    //doest write new player to file
+    /**
+     * Adds a player to the statistics file and hashmap
+     * @param name 
+     */
     public void addPlayerStats(String name)
     {
         stats.put(name, "0 0");
@@ -61,6 +66,10 @@ public class PlayerStatistics {
         }
     }
     
+    /**
+     * Adds a win to the specified user
+     * @param user 
+     */
     public void addWin(String user)
     {
         String[] winLoss = stats.get(user).split(" ");
@@ -70,6 +79,10 @@ public class PlayerStatistics {
         updateLine(user + "," + winLoss[0] + "," + winLoss[1], user + "," + String.valueOf(wins) + "," + winLoss[1]);
     }
     
+    /**
+     * adds a loss to the specified user
+     * @param user 
+     */
     public void addLoss(String user)
     {
         String[] winLoss = stats.get(user).split(" ");
@@ -121,9 +134,13 @@ public class PlayerStatistics {
         }
     }
     
+    /**
+     * Returns a string representation of all player statistics
+     * @return 
+     */
     public String getAllStats()
     {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder("stats ");
         for(Map.Entry<String, String> entry : stats.entrySet())
         {
             sb.append(entry.getKey());
@@ -131,6 +148,7 @@ public class PlayerStatistics {
             sb.append(entry.getValue());
             sb.append(" ");
         }
+        System.out.println(sb.toString());
         return sb.toString();
     }
     

@@ -90,14 +90,14 @@ public class Frame extends javax.swing.JFrame {
             gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gamePanelLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-				.addComponent(gameView1, 400,400,400)
+				.addComponent(gameView1, 600,600,600)
                 .addContainerGap(551, Short.MAX_VALUE))
         );
         gamePanelLayout.setVerticalGroup(
             gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gamePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(gameView1, 400,400,400)
+                .addComponent(gameView1, 600,600,600)
                 .addContainerGap(375, Short.MAX_VALUE))
         );
 
@@ -128,17 +128,17 @@ public class Frame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mainPane, 400, 500, 600)
+                .addComponent(mainPane, 600, 600, 600)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPane, 400, 500, 600)
+                .addComponent(mainPane, 600, 600, 600)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-       this.setMaximumSize(new java.awt.Dimension(400,600));
+       //this.setMaximumSize(new java.awt.Dimension(500,100));
         pack();
     }// </editor-fold>//GEN-END:initComponents
 

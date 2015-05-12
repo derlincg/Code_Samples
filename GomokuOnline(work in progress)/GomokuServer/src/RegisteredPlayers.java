@@ -1,5 +1,8 @@
 //package gomokuserver;
 
+/**
+ * Stores and manages data used in player authentication.
+ */
 
 import java.io.BufferedReader;
 import java.io.File;

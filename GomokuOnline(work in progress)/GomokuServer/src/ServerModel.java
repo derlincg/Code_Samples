@@ -1,9 +1,7 @@
 //package gomokuserver;
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Holds data used in the server classes
  */
 
 import java.util.ArrayList;
@@ -203,6 +201,10 @@ public class ServerModel {
         playerStats.addPlayerStats(username);
     }
     
+    /**
+     * returns a string representation of all stored statistics
+     * @return 
+     */
     public String getAllStatistics()
     {
         return playerStats.getAllStats();

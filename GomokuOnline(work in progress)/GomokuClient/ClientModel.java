@@ -45,6 +45,23 @@ public class ClientModel implements Runnable {
     public boolean turn;
     public GameView gameView;
     private Constants consts = new Constants();
+    public boolean loggedIn = false;
+    
+    
+    /**
+     * 
+     */
+    public void setUsername(String u){
+        this.username = u;
+    }
+
+    /**
+     * 
+     */
+    public void setLoggedIn(boolean b){
+        loggedIn = b;
+    }
+    
     /**
      * Creates a new frame to hold each needed view.
      *
@@ -55,9 +72,8 @@ public class ClientModel implements Runnable {
     public void createFrame(LoginView login, LobbyView lobby, GameView game, LeaderboardView leader) {
         frame = new Frame(login, lobby, game, leader);
     }
-    
-    public void createGameView()
-    {
+
+    public void createGameView() {
         System.out.println("create new game.");
         frame.newGame();
     }
@@ -113,8 +129,8 @@ public class ClientModel implements Runnable {
     public void setGameController(GameController cont) {
         this.gameController = cont;
     }
-    
-    public void setLeaderboardController(LeaderboardController cont){
+
+    public void setLeaderboardController(LeaderboardController cont) {
         this.leaderController = cont;
     }
 
@@ -124,10 +140,10 @@ public class ClientModel implements Runnable {
      *
      * @param user
      */
-    public void loginLobbyTrans(String user) {
+    public void loginLobbyTrans() {
         loginController.closeView(LOBBY);
         lobbyController.setupIOStreams();
-        frame.setTitle("Gomoku || " + user);
+        frame.setTitle("Gomoku || " + username);
 
     }
 
@@ -157,16 +173,24 @@ public class ClientModel implements Runnable {
 
     public void gameLobbyTrans() {
         frame.updateView(consts.LOBBY);
+        frame.newGame();
     }
     
-    public void lobbyLeaderTrans(){
+    public void statsLobbytrans() {
+    	frame.updateView(consts.LOBBY);
+    }
+
+    public void lobbyLeaderTrans() {
         frame.updateView(consts.LEADERBOARD);
-        try {
-			leaderController.setIOStreams(socket.getInputStream(), socket.getOutputStream());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
         
+        try {
+            leaderController.setIOStreams(socket.getInputStream(), socket.getOutputStream());
+           
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+         leaderController.getStats();
+
     }
 
     /**
@@ -189,6 +213,11 @@ public class ClientModel implements Runnable {
         } catch (IOException ex) {
             Logger.getLogger(ClientModel.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+     public void gameLoginTrans(){
+        frame.updateView("loginPane");
+        frame.newGame();
     }
 
     /**
@@ -219,10 +248,18 @@ public class ClientModel implements Runnable {
      * @param difficulty
      */
     public void aiGameTrans(String difficulty) {
-        gameController.newGame();
         gameController.setTurnOrder(true);
         gameController.setaiGame(true, difficulty);
-    	frame.updateView(GAME);
+        frame.updateView(GAME);
 
+    }
+    
+    public void processStats(String[] s){
+        leaderController.updateStatsBoard(s);
+    }
+    
+    public void lostConnection(){
+       // socket = null;
+        frame.updateView("loginPane");
     }
 }

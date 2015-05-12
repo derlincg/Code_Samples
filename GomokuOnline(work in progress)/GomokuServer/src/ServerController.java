@@ -1,9 +1,7 @@
 //package gomokuserver;
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controlls what goes to and from the server model, view and client programs
  */
 
 import java.io.DataInputStream;
@@ -240,6 +238,10 @@ public class ServerController implements Runnable {
         model.addLossToPlayerStats(user);
     }
     
+    /**
+     * returns a string representation of all stored statistics
+     * @return 
+     */
     public String getAllStatistics()
     {
         return model.getAllStatistics();
