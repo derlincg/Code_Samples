@@ -11,7 +11,7 @@ import java.awt.CardLayout;
 public class Frame extends javax.swing.JFrame {
     
     /**
-     * Creates new form frame
+     * Creates new frame
      */
     public Frame(LoginView login, LobbyView lobby, GameView game, LeaderboardView leader) {
         loginView1 = login;
