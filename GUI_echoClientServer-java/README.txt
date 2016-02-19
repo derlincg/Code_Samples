@@ -2,7 +2,7 @@ This is an echo client-server GUI application. The clients send messages, and th
 and distributes that message to all the clients connected to the server (Essentially a group chat). 
 Both the Client and the Server use MVC design.
 
-RUN VIA COMMAND PROMPT:
+RUN VIA COMMAND LINE:
 1. navigate to the src folder of the server, and run: 
 	javac *.java 
 	java Main [ip address of computer] [port #]
